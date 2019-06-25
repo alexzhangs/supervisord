@@ -1,0 +1,52 @@
+#!/bin/sh
+# Supervisor init.d script for Amazon Linux AMI.
+#
+# chkconfig: 2345 80 20
+# description: Autostarts supervisord.
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+supervisorctl="/usr/local/bin/supervisorctl"
+supervisord="/usr/local/bin/supervisord"
+conf="/etc/supervisord.conf"
+name="supervisord"
+
+[ -f $supervisord ] || exit 1
+[ -f $supervisorctl ] || exit 1
+
+RETVAL=0
+
+start() {
+    printf "Starting $name: "
+    daemon "$supervisord" -c "$conf"
+    RETVAL=$?
+    printf "\n"
+    return $RETVAL
+}
+
+stop() {
+    printf "Stopping $name: "
+    $supervisorctl shutdown
+    RETVAL=$?
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    status)
+        status "$supervisord"
+        RETVAL=$?
+        ;;
+esac
+
+exit $RETVAL
