@@ -1,7 +1,15 @@
 # supervisord
+
 Supervisor init.d script for Amazon Linux AMI.
 
-Forked from gist: https://gist.github.com/mhayes/866900
+Tested with:
+
+* supervisor 4.0.3 on
+  * Amazon Linux AMI
+* supervisor 4.0.3 and 4.2.1 on
+  * Amazon Linux 2 AMI
+
+Originally forked from: https://gist.github.com/mhayes/866900
 
 ## Why does this repo exist?
 1. `supervisor` is availabe in
