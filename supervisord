@@ -10,6 +10,8 @@
 # Source function library.
 . /etc/rc.d/init.d/functions
 
+PATH=$PATH:/usr/local/bin
+
 NAME="supervisord"
 CONFIGFILE="/etc/$NAME.conf"
 PIDFILE="/tmp/$NAME.pid"
