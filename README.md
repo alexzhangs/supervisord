@@ -30,7 +30,7 @@ script included in the package.
 git clone https://github.com/alexzhangs/supervisord
 cp -a supervisord/supervisord /etc/init.d/
 chmod 755 /etc/init.d/supervisord
-chkconfig --add supervisord
+chkconfig supervisord on
 ```
 
 Or more directly way:
@@ -38,7 +38,14 @@ Or more directly way:
 ```
 curl https://raw.githubusercontent.com/alexzhangs/supervisord/master/supervisord -o /etc/init.d/supervisord
 chmod 755 /etc/init.d/supervisord
-chkconfig --add supervisord
+chkconfig supervisord on
+```
+
+Or use [xsh](https://github.com/alexzhangs/xsh) and its lib [aws](https://github.com/xsh-lib/aws) if you have set it up already:
+
+```
+# install supervisor, and the InitScript(this repo), set autostart, and start the service
+xsh aws/gist/ec2/linux/installer/supervisor -i -o -s -v 4.0.3
 ```
 
 ## Usage
