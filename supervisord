@@ -34,6 +34,11 @@ if [[ ! -x $SUPERVISORCTL ]]; then
     exit 255
 fi
 
+if [ -f /etc/default/supervisor ] ; then
+    printf "$DAEMON: sourcing /etc/default/supervisor\n"
+    . /etc/default/supervisor
+fi
+
 start () {
     declare rc
     printf "Starting $NAME: "
